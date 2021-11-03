@@ -3,6 +3,7 @@ package com.company;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
+import java.util.function.BiFunction;
 
 public class Main {
 
@@ -76,9 +77,30 @@ public class Main {
         testInt1.retainAll(testInt2);
         System.out.println(testInt1);
 
-    
-    }
 
+        Map<Integer, String> stringMap = new HashMap<>();
+        stringMap.put(1, "Add");
+        stringMap.put(11, "Kirill");
+        stringMap.put(7, "Mex");
+        stringMap.put(3, "Noke");
+
+
+        for (var key : stringMap.keySet()) {
+            stringMap.compute(key, (a, b) -> b.toLowerCase(Locale.ROOT));
+        }
+
+        System.out.println(stringMap);
+
+        stringMap.replaceAll((a, b) -> b = "Unknown");
+
+        System.out.println(stringMap);
+
+
+        stringMap.computeIfAbsent(2,(a)->"AbsentValue");
+        System.out.println(stringMap);
+
+
+    }
 
 
 }
